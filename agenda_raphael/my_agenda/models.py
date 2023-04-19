@@ -14,6 +14,14 @@ class Agenda(models.Model):
         return f"{self.name} - Agenda de {self.owner.username}"
 
 
+class Contact(models.Model):
+    nom = models.CharField(max_length=255)
+    agenda = models.ForeignKey(Agenda, on_delete=models.CASCADE, related_name='contacts')
+
+    def __str__(self):
+        return self.nom
+
+
 class Coordonnee(models.Model):
     TYPES = (
         ('postale', 'Postale'),
@@ -24,6 +32,7 @@ class Coordonnee(models.Model):
 
     type = models.CharField(max_length=15, choices=TYPES)
     valeur = models.TextField()
+    contact = models.ForeignKey('Contact', on_delete=models.CASCADE, related_name='coordinates')
 
     def __str__(self):
         return f"{self.type} - {self.valeur}"
@@ -57,15 +66,6 @@ class Coordonnee(models.Model):
             self.validate_email()
         elif self.type == 'web':
             self.validate_web()
-
-
-class Contact(models.Model):
-    nom = models.CharField(max_length=255)
-    agenda = models.ForeignKey(Agenda, on_delete=models.CASCADE, related_name='contacts')
-    coordinates = models.ManyToManyField(Coordonnee, related_name='contacts')
-
-    def __str__(self):
-        return self.nom
 
 
 @receiver(post_save, sender=User)

@@ -17,8 +17,8 @@
         <tr>
           <td>{{ contact.nom }}</td>
           <td>
-            {% for coordinate in contact.coordinates.all %}
-              {{ coordinate.type }}: {{ coordinate.value }}<br>
+            {% for coordonnee in contact.coordinates.all %}
+              {{ coordonnee.type }}: {{ coordonnee.valeur }}<br>
             {% endfor %}
           </td>
           <td>

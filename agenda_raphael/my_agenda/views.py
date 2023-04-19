@@ -16,9 +16,9 @@ def contact_list(request):
     agenda_id = request.GET.get('agenda_id')
     if agenda_id:
         agenda = get_object_or_404(Agenda, id=agenda_id, owner=request.user)
-        contacts = agenda.contacts.all()
+        contacts = agenda.contacts.prefetch_related('coordinates').all()
     else:
-        contacts = Contact.objects.filter(agenda__owner=request.user)
+        contacts = Contact.objects.filter(agenda__owner=request.user).prefetch_related('coordinates')
     return render(request, 'my_agenda/contact_list.html', {'contacts': contacts})
 
 
