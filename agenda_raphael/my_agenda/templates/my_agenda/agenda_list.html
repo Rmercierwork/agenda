@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Liste des agendas</h1>
+  <ul>
+  {% for agenda in agendas %}
+    <li>
+      <a href="{% url 'my_agenda:contact_list' %}?agenda_id={{ agenda.pk }}">{{ agenda }}</a>
+      <a href="{% url 'my_agenda:delete_agenda' agenda.id %}">Supprimer</a>
+    </li>
+  {% empty %}
+    <li>Aucun agenda trouvé</li>
+  {% endfor %}
+  </ul>
+  <a href="{% url 'my_agenda:add_agenda' %}">Créer un nouvel agenda</a>
+{% endblock %}

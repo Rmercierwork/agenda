@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a href="{% url 'my_agenda:agenda_list' %}">Retour à la liste des agendas</a>
+  <h1>Liste des contacts</h1>
+  <a href="{% url 'my_agenda:add_contact' %}">Ajouter un contact</a>
+  <table>
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Coordonnées</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for contact in contacts %}
+        <tr>
+          <td>{{ contact.nom }}</td>
+          <td>
+            {% for coordinate in contact.coordinates.all %}
+              {{ coordinate.type }}: {{ coordinate.value }}<br>
+            {% endfor %}
+          </td>
+          <td>
+            <a href="{% url 'my_agenda:update_contact' contact.pk %}">Modifier</a> |
+            <a href="{% url 'my_agenda:delete_contact' contact.pk %}">Supprimer</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

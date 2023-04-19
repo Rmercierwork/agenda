@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Ajouter un contact</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.nom.label_tag }} {{ form.nom }}
+    <br>
+    {{ form.postal.label_tag }} {{ form.postal }}
+    <br>
+    {{ form.phone.label_tag }} {{ form.phone }}
+    <br>
+    {{ form.email.label_tag }} {{ form.email }}
+    <br>
+    {{ form.web.label_tag }} {{ form.web }}
+    <br>
+    <button type="submit">Enregistrer</button>
+</form>
+  <a href="{% url 'my_agenda:contact_list' %}">Retour à la liste des contacts</a>
+{% endblock %}
