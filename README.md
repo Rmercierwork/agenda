@@ -1,6 +1,15 @@
 # Mon Agenda
 
 Mon Agenda est une application web qui permet de gérer vos contacts et de planifier des rendez-vous.
+Il s'agit d'un projet fait en 7heures lors d'un cours sur les diagrammes de classes.
+Le but était de créer à partir d'un diagramme une application au langage de notre choix.
+
+Pour ma part j'ai choisi de le faire en python avec django
+
+## TODO
+
+- faire tout le style de l'application
+- rajouter une gestion utilisateur autre qu'en passant par admin
 
 ## Prérequis
 
@@ -13,7 +22,7 @@ Mon Agenda est une application web qui permet de gérer vos contacts et de plani
 1. Clonez ce dépôt dans un répertoire de votre choix :
 https://github.com/Rmercierwork/agenda.git
 2. Accédez au répertoire du projet :
-`cd agenda_raphael` -> `cd my_agenda`
+`cd agenda_raphael` `cd my_agenda`
 3. Créez un environnement virtuel et activez-le :
 `python -m venv venv`
 `venv\Scripts\activate`
